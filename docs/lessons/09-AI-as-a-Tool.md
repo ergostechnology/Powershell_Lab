@@ -199,7 +199,7 @@ Would you like help customizing the export further, such as filtering events by 
 	2. If any of the samples didn't work, why not? 
 3. How can the provided code samples be used in production scripts?
 ---
-![image](https://github.com/user-attachments/assets/c0a7d4d9-294a-48d2-8714-08cea7053a00)
+![Thanks For Coming]([https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif](https://media.tenor.com/QTtnvTd5RXwAAAAC/thats-it-there-you-go.gif))
 
 # Q & A Time
 You've got questions, I might have answers.
