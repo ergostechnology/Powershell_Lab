@@ -3,13 +3,11 @@
 We've all asked ChatGPT to come up with a limerick or on the fly at least once or twice... right? Just me? Whatever. Well, it turns out that AI can be leveraged and utilized for more than just little whimsical quips and asides.
 
 AI, while an incredibly powerful tool is not without its faults. "Computers don't blunder" doesn't really work when we're talking artificial intelligence due to the very nature of the intelligence being, well, artificial. AI only knows about what it is trained to know until the model ingests new information and that's not something we're going to be diving into here. 
-
 ## Privacy
 
-This is probably the most serious section, so let's get it out of the way. We absolutely never, and The Rock means NEVVVVVVER, want to submit personally identifiable information that could be traced back to the company. Plain and simple, there's no room for grey (gray) areas here. I will typically substitute "ERGOS" with "ACME" in code that I work with; find/replace is your best friend here. 
+This is probably the most serious section, so let's get it out of the way. We absolutely [NEVER, and The Rock means NEVVVVVVER](https://looptube.io/?videoId=9F2iVzVGm1w&start=0.4062499999999999&end=5.59191176470588&rate=1), want to submit personally identifiable information that could be traced back to the company. Plain and simple, there's no room for grey (gray) areas here. I will typically substitute "ERGOS" with "ACME" in code that I work with; find/replace is your best friend here. 
 
 Now that we have that out of the way and we can all agree to not leak our deepest, darkest secrets to the machines, we can move on.
-
 ## The "Main" Models
 
 1. OpenAI ChatGPT: https://chat.openai.com
@@ -18,12 +16,10 @@ Now that we have that out of the way and we can all agree to not leak our deepes
 4. ClaudeAI: https://claude.ai/
 
 At the core, all of these models are designed to do the same thing, learn. Let's see an example prompt and response from each of the models mentioned. For simplicity we will use the same prompt across all models.
-
 ### Prompt
 ```
 Can you write me a Powershell script that will export the Windows System log to C:\ACME\System.evtx?
 ```
-
 ### OpenAI ChatGPT
 ```Powershell
 $ExportPath = "C:\ACME\System.evtx"
@@ -151,7 +147,7 @@ You can run this script in PowerShell to export the Windows System event log to 
 You'll need administrator privileges to run this script successfully since accessing event logs typically requires elevated permissions.
 
 ---
-### Bonus Interaction (Powershell Experts Model via OpenAI)
+### Bonus Prompt
 ```
 Is there a more efficient way than the following code snippet to export the System log to an evtx file in powershell? 
 
@@ -160,7 +156,7 @@ Is there a more efficient way than the following code snippet to export the Syst
 I would like to avoid using an external program wevtutil.exe if possible.
 ```
 
-### Bonus: "Powershell Experts Model"
+### "Powershell Experts Model" via OpenAI
 ```Powershell
 # Define the export directory and file
 $exportDir = "C:\ACME"
@@ -192,3 +188,17 @@ You can use the `System.Diagnostics.Eventing.Reader.EventLogSession` class to ex
 This approach eliminates dependency on `wevtutil.exe` and keeps everything within PowerShell.
 
 Would you like help customizing the export further, such as filtering events by time range or event ID?
+
+## Hands On
+
+1. Review the output from each AI model. 
+	1. Does the response make sense? 
+	2. Does it match the code provided?
+2. Attempt to execute each code block and review the results.
+	1. Did all the of the provided samples work?
+	2. If any of the samples didn't work, why not? 
+3. How can the provided code samples be used in production scripts?
+---
+![[Pasted image 20250321131304.png]]
+# Q & A Time
+You've got questions, I might have answers.
