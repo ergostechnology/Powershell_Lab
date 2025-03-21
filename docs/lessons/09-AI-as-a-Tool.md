@@ -199,6 +199,7 @@ Would you like help customizing the export further, such as filtering events by 
 	2. If any of the samples didn't work, why not? 
 3. How can the provided code samples be used in production scripts?
 ---
-![[Pasted image 20250321131304.png]]
+![image](https://github.com/user-attachments/assets/c0a7d4d9-294a-48d2-8714-08cea7053a00)
+
 # Q & A Time
 You've got questions, I might have answers.
