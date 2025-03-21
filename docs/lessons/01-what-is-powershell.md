@@ -6,8 +6,8 @@
 
 ## Cross Platform
 
-- Every Windows since 7 has PowerShell by default
-- The introduction of PowerShell Core brought support for mac and linux OS
+- Every version of Windows since 7 has PowerShell by default
+- The introduction of PowerShell Core brought support for macOS and Linux
 ## Command-Line Shell
 
 - Interactive Support
