@@ -423,6 +423,18 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    If This, Then That
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -433,6 +445,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#if-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      If What?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      What else?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -575,6 +624,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#if-what" class="md-nav__link">
+    <span class="md-ellipsis">
+      If What?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      What else?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -598,6 +673,49 @@
 
 
 <h1 id="if-this-then-that">If This, Then That</h1>
+<p>One of the most common tasks in any automation is evaluating conditionals. </p>
+<p>Without any sort of condition, a script or command has no guard rails and would impact every item returned. </p>
+<h2 id="if-what">If What?</h2>
+<p>The basic conditional is an <code>if</code> statement. <code>If</code> asks the question &ldquo;does this criteria fit?&rdquo;</p>
+<p>Let&rsquo;s take a look at an imaginary user:</p>
+<pre><code class="language-powershell">### This user does not actually exist
+$user = Get-ADUser mason
+
+### Use an if statement to determine if the account exists
+if ($user) {
+    Write-Host &quot;The user $($user.name) exists!&quot;
+}
+</code></pre>
+<p>In the above code, we first search Active Directory for a user with the username mason, and assign the results of that search to the variable $user</p>
+<p>In the second statement, we use <code>if</code> to begin an evaluation. The data between the parenthesis () is the data we want to evaluate. In this case, we do not need an evaluator, as the we only need to know if the account exists. By default <code>if ($variable)</code> is checking to see if the variable exists (and returns $true) or if it does not exists (which returns $null).</p>
+<p>If the evaluation is true, the statement allows for the cmdlet in the script block (designated by { } ) to execute. If the evaluation fails, and the user does not exist, the script continues on without performing the functions. </p>
+<h2 id="what-else">What <em>else</em>?</h2>
+<p><code>Else</code> and <code>elseif</code> add more functionality to a basic <code>if</code> condition. Consider a situation where you want to perform one action if the condition exists, but you want to perform a separate action if the condition is not met. Continuing on with the example from above</p>
+<pre><code class="language-powershell">### This user does not actually exist
+$user = Get-ADUser mason
+
+### Use an if statement to determine if the account exists
+if ($user) {
+    Write-Host &quot;The user $($user.name) exists!&quot;
+} else {
+    Write-Host &quot;The user account was not found!&quot;
+}
+</code></pre>
+<p>Now, if we do not find the user account, we can print to the terminal that there is no account found. That text will <em>only</em> be displayed if no user account exists. </p>
+<p>To extend this further, what if you had more than 2 possible states for a condition to exist? Perhaps there are multiple users with the username mason (potentially an account named mason-admin could be found). You could look not just at the existence of an object or variable, but take action based on how many objects were returned:</p>
+<pre><code class="language-powershell">### This user does not actually exist
+$user = Get-ADUser mason
+
+### Use an if statement to determine if the account exists
+if ($user.count -eq 1) {
+    Write-Host &quot;The user $($user.name) exists!&quot;
+} elseif ($user.count -gt 1) {
+    Write-Host &quot;Multiple user accounts were found: &quot;
+    $user.name
+} else {
+    Write-Host &quot;The user account was not found!&quot;
+}
+</code></pre>
 
 
 
