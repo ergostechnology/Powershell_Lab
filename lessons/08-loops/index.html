@@ -12,7 +12,7 @@
         <link rel="prev" href="../07-conditionals/">
       
       
-        <link rel="next" href="../09-AI-as-a-Tool/">
+        <link rel="next" href="../09-ai-as-a-tool/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -468,11 +468,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-AI-as-a-Tool/" class="md-nav__link">
+      <a href="../09-ai-as-a-tool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     AI: Not Quite Our New Overlords
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-knowledge-check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Your Turn
     
   </span>
   
@@ -598,6 +620,33 @@
 
 
 <h1 id="around-the-world">Around the World</h1>
+<p>Conditionals are great for evaluating single items, but what happens when you have a group or collection of objections assigned to a variable, and you need to evaluate something about each object inside the collection? </p>
+<p>Iterating over a group of objects is called &ldquo;looping&rdquo;, and it really helps with performing an action or set of actions across multiple items in a set. </p>
+<p>Following on our previous example, what if we don&rsquo;t already know the username of the account we are looking for, but we do know their first or last name?</p>
+<p>In this situation we can use a loop to go through the list of user accounts, and evaluate which account(s) share a specific first name:</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># First, let&#39;s get all of the users in the &#39;Domain Users&#39; OU</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c"># To accomplish this, we&#39;ll need to grab the Distinguished Name of the OU, but we can get this easily using PowerShell</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">$OU</span> <span class="p">=(</span><span class="nb">Get-ADOrganizationalUnit</span> <span class="n">-Filter</span> <span class="p">{</span><span class="n">name</span> <span class="o">-like</span> <span class="s2">&quot;Domain Users&quot;</span><span class="p">}).</span><span class="n">DistinguishedName</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c"># With the OU assigned to a variable, we can use this to search Active Directory for a group of users in that OU specifically. We&#39;ll assign a variable to this for easy use</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">$DomainUsers</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">-SearchBase</span> <span class="nv">$OU</span> <span class="n">-Filter</span> <span class="p">*</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c"># Now, we have our data. Let&#39;s start our loop:</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span> <span class="k">in</span> <span class="nv">$DomainUsers</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="c"># Any code we put here applies to each $user object individually</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="c"># Let&#39;s see which users have a first name of Mason</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="k">if</span> <span class="p">(</span><span class="nv">$user</span><span class="p">.</span><span class="n">GivenName</span> <span class="o">-match</span> <span class="s2">&quot;Mason&quot;</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="c"># If the user&#39;s Given name is a match to the string &quot;Mason&quot;, write to the host</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="nb">Write-Host</span> <span class="s2">&quot;Found </span><span class="p">$(</span><span class="nv">$user</span><span class="p">.</span><span class="n">SamAccountName</span><span class="p">)</span><span class="s2"> with Given Name Mason&quot;</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="p">}</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>While writing to the console may not be much, this is just an example. </p>
+<p>Using loops, you can iterate through a directory to do things like update phone numbers across user accounts, change employee titles based off of e-mail addresses, or even add and remove users to groups, all without having to look for each account one at a time. </p>
 
 
 

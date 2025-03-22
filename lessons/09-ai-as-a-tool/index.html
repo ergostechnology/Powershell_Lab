@@ -12,7 +12,7 @@
         <link rel="prev" href="../08-loops/">
       
       
-        <link rel="next" href="../../references/software-prerequisites/">
+        <link rel="next" href="../10-knowledge-check/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -619,6 +619,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-knowledge-check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Your Turn
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -838,7 +860,7 @@
 
 
   
-    <a href="https://github.com/ergostechnology/Powershell_Lab/blob/main/docs/lessons/09-AI-as-a-Tool.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/ergostechnology/Powershell_Lab/blob/main/docs/lessons/09-ai-as-a-tool.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -861,23 +883,22 @@
 </ol>
 <p>At the core, all of these models are designed to do the same thing, learn. Let&rsquo;s see an example prompt and response from each of the models mentioned. For simplicity we will use the same prompt across all models.</p>
 <h3 id="prompt">Prompt</h3>
-<pre><code>Can you write me a Powershell script that will export the Windows System log to C:\ACME\System.evtx?
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Can you write me a Powershell script that will export the Windows System log to C:\ACME\System.evtx?
+</span></code></pre></div>
 <h3 id="openai-chatgpt">OpenAI ChatGPT</h3>
-<pre><code class="language-Powershell">$ExportPath = &quot;C:\ACME\System.evtx&quot;
-
-# Ensure the directory exists
-$ExportDirectory = Split-Path -Path $ExportPath -Parent
-if (!(Test-Path -Path $ExportDirectory)) {
-    New-Item -ItemType Directory -Path $ExportDirectory -Force | Out-Null
-}
-
-# Export the System event log
-wevtutil epl System $ExportPath
-
-Write-Output &quot;System log exported to $ExportPath&quot;
-
-</code></pre>
+<div class="language-Powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$ExportPath</span> <span class="p">=</span> <span class="s2">&quot;C:\ACME\System.evtx&quot;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c"># Ensure the directory exists</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">$ExportDirectory</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="n">-Path</span> <span class="nv">$ExportPath</span> <span class="n">-Parent</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$ExportDirectory</span><span class="p">))</span> <span class="p">{</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="nv">$ExportDirectory</span> <span class="n">-Force</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c"># Export the System event log</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">wevtutil</span> <span class="n">epl</span> <span class="n">System</span> <span class="nv">$ExportPath</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">Write-Output</span> <span class="s2">&quot;System log exported to $ExportPath&quot;</span>
+</span></code></pre></div>
 <p>This script:</p>
 <ol>
 <li>Defines the export path (<code>C:\ACME\System.evtx</code>).</li>
@@ -887,40 +908,40 @@ Write-Output &quot;System log exported to $ExportPath&quot;
 </ol>
 <p>Let me know if you need any modifications! 🚀</p>
 <h3 id="microsoft-copilot">Microsoft Copilot</h3>
-<pre><code class="language-Powershell"># Define the path where the log will be exported
-$exportPath = &quot;C:\ACME\System.evtx&quot;
-
-# Export the System log to the specified path
-Export-EventLog -LogName System -Path $exportPath
-
-Write-Host &quot;System log has been exported to $exportPath&quot;
-</code></pre>
+<div class="language-Powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Define the path where the log will be exported</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">$exportPath</span> <span class="p">=</span> <span class="s2">&quot;C:\ACME\System.evtx&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c"># Export the System log to the specified path</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">Export-EventLog</span> <span class="n">-LogName</span> <span class="n">System</span> <span class="n">-Path</span> <span class="nv">$exportPath</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nb">Write-Host</span> <span class="s2">&quot;System log has been exported to $exportPath&quot;</span>
+</span></code></pre></div>
 <p>This script sets the export path and uses the <code>Export-EventLog</code> cmdlet to export the System log to the specified location. If you have any questions or need further assistance, feel free to ask!</p>
 <h3 id="google-gemini">Google Gemini</h3>
-<pre><code class="language-Powershell"># Define the output path
-$OutputPath = &quot;C:\ACME\System.evtx&quot;
-
-# Check if the output directory exists, create if not
-$OutputDir = Split-Path -Path $OutputPath -Parent
-if (!(Test-Path -Path $OutputDir -PathType Container)) {
-    try {
-        New-Item -ItemType Directory -Path $OutputDir -Force | Out-Null
-    }
-    catch {
-        Write-Error &quot;Failed to create directory: $($OutputDir). Error: $($_.Exception.Message)&quot;
-        return # Exit the script if directory creation fails
-    }
-}
-
-# Export the System log
-try {
-    Get-WinEvent -LogName System | Export-WinEvent -Path $OutputPath -Force
-    Write-Host &quot;System log exported successfully to: $OutputPath&quot;
-}
-catch {
-    Write-Error &quot;Failed to export System log. Error: $($_.Exception.Message)&quot;
-}
-</code></pre>
+<div class="language-Powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Define the output path</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$OutputPath</span> <span class="p">=</span> <span class="s2">&quot;C:\ACME\System.evtx&quot;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c"># Check if the output directory exists, create if not</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">$OutputDir</span> <span class="p">=</span> <span class="nb">Split-Path</span> <span class="n">-Path</span> <span class="nv">$OutputPath</span> <span class="n">-Parent</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">if</span> <span class="p">(!(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$OutputDir</span> <span class="n">-PathType</span> <span class="n">Container</span><span class="p">))</span> <span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">try</span> <span class="p">{</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="nb">New-Item</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Path</span> <span class="nv">$OutputDir</span> <span class="n">-Force</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="p">}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="k">catch</span> <span class="p">{</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="nb">Write-Error</span> <span class="s2">&quot;Failed to create directory: </span><span class="p">$(</span><span class="nv">$OutputDir</span><span class="p">)</span><span class="s2">. Error: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">Message</span><span class="p">)</span><span class="s2">&quot;</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="k">return</span> <span class="c"># Exit the script if directory creation fails</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="p">}</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="p">}</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="c"># Export the System log</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="k">try</span> <span class="p">{</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="nb">Get-WinEvent</span> <span class="n">-LogName</span> <span class="n">System</span> <span class="p">|</span> <span class="nb">Export-WinEvent</span> <span class="n">-Path</span> <span class="nv">$OutputPath</span> <span class="n">-Force</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;System log exported successfully to: $OutputPath&quot;</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="p">}</span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="k">catch</span> <span class="p">{</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="nb">Write-Error</span> <span class="s2">&quot;Failed to export System log. Error: </span><span class="p">$(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Exception</span><span class="p">.</span><span class="n">Message</span><span class="p">)</span><span class="s2">&quot;</span>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="p">}</span>
+</span></code></pre></div>
 <p><strong>Explanation and Important Considerations:</strong></p>
 <ol>
 <li><strong>Output Path:</strong><ul>
@@ -962,32 +983,32 @@ catch {
 </li>
 </ol>
 <h3 id="claudeai">ClaudeAI</h3>
-<pre><code class="language-Powershell"># Script to export Windows System log to C:\ACME\System.evtx
-
-# Create the destination directory if it doesn't exist
-if (-not (Test-Path -Path &quot;C:\ACME&quot; -PathType Container)) {
-    New-Item -Path &quot;C:\ACME&quot; -ItemType Directory -Force
-    Write-Host &quot;Created directory: C:\ACME&quot;
-}
-
-# Export the System event log
-try {
-    wevtutil epl System &quot;C:\ACME\System.evtx&quot;
-    Write-Host &quot;Successfully exported System event log to C:\ACME\System.evtx&quot;
-} catch {
-    Write-Error &quot;Failed to export System event log: $_&quot;
-    exit 1
-}
-
-# Verify the export was successful
-if (Test-Path -Path &quot;C:\ACME\System.evtx&quot; -PathType Leaf) {
-    $fileInfo = Get-Item &quot;C:\ACME\System.evtx&quot;
-    Write-Host &quot;Export verified. File size: $($fileInfo.Length) bytes&quot;
-} else {
-    Write-Error &quot;Export verification failed. File not found at C:\ACME\System.evtx&quot;
-    exit 1
-}
-</code></pre>
+<div class="language-Powershell highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c"># Script to export Windows System log to C:\ACME\System.evtx</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c"># Create the destination directory if it doesn&#39;t exist</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="s2">&quot;C:\ACME&quot;</span> <span class="n">-PathType</span> <span class="n">Container</span><span class="p">))</span> <span class="p">{</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">&quot;C:\ACME&quot;</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;Created directory: C:\ACME&quot;</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="p">}</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c"># Export the System event log</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="k">try</span> <span class="p">{</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">wevtutil</span> <span class="n">epl</span> <span class="n">System</span> <span class="s2">&quot;C:\ACME\System.evtx&quot;</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;Successfully exported System event log to C:\ACME\System.evtx&quot;</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    <span class="nb">Write-Error</span> <span class="s2">&quot;Failed to export System event log: $_&quot;</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    <span class="n">exit</span> <span class="n">1</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="p">}</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c"># Verify the export was successful</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="k">if</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="s2">&quot;C:\ACME\System.evtx&quot;</span> <span class="n">-PathType</span> <span class="n">Leaf</span><span class="p">)</span> <span class="p">{</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="nv">$fileInfo</span> <span class="p">=</span> <span class="nb">Get-Item</span> <span class="s2">&quot;C:\ACME\System.evtx&quot;</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>    <span class="nb">Write-Host</span> <span class="s2">&quot;Export verified. File size: </span><span class="p">$(</span><span class="nv">$fileInfo</span><span class="p">.</span><span class="n">Length</span><span class="p">)</span><span class="s2"> bytes&quot;</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="nb">Write-Error</span> <span class="s2">&quot;Export verification failed. File not found at C:\ACME\System.evtx&quot;</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="n">exit</span> <span class="n">1</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>You can run this script in PowerShell to export the Windows System event log to the specified location. The script:</p>
 <ol>
 <li>Creates the C:\ACME directory if it doesn&rsquo;t exist</li>
@@ -997,27 +1018,27 @@ if (Test-Path -Path &quot;C:\ACME\System.evtx&quot; -PathType Leaf) {
 <p>You&rsquo;ll need administrator privileges to run this script successfully since accessing event logs typically requires elevated permissions.</p>
 <hr />
 <h3 id="bonus-prompt">Bonus Prompt</h3>
-<pre><code>Is there a more efficient way than the following code snippet to export the System log to an evtx file in powershell? 
-
-`wevtutil epl System &quot;C:\Export\System.evtx&quot;` 
-
-I would like to avoid using an external program wevtutil.exe if possible.
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Is there a more efficient way than the following code snippet to export the System log to an evtx file in powershell? 
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>`wevtutil epl System &quot;C:\Export\System.evtx&quot;` 
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>I would like to avoid using an external program wevtutil.exe if possible.
+</span></code></pre></div>
 <h3 id="powershell-experts-model-via-openai">&ldquo;Powershell Experts Model&rdquo; via OpenAI</h3>
-<pre><code class="language-Powershell"># Define the export directory and file
-$exportDir = &quot;C:\ACME&quot;
-$exportFile = &quot;$exportDir\System.evtx&quot;
-
-# Ensure the directory exists
-if (-not (Test-Path -Path $exportDir)) {
-    New-Item -Path $exportDir -ItemType Directory -Force | Out-Null
-}
-
-# Export the System event log
-$logSession = New-Object System.Diagnostics.Eventing.Reader.EventLogSession
-$logSession.ExportLog(&quot;System&quot;, [System.Diagnostics.Eventing.Reader.PathType]::LogName, &quot;*&quot;, $exportFile)
-Write-Host &quot;System log exported to: $exportFile&quot;
-</code></pre>
+<div class="language-Powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c"># Define the export directory and file</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">$exportDir</span> <span class="p">=</span> <span class="s2">&quot;C:\ACME&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">$exportFile</span> <span class="p">=</span> <span class="s2">&quot;$exportDir\System.evtx&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c"># Ensure the directory exists</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">if</span> <span class="p">(</span><span class="o">-not</span> <span class="p">(</span><span class="nb">Test-Path</span> <span class="n">-Path</span> <span class="nv">$exportDir</span><span class="p">))</span> <span class="p">{</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="nb">New-Item</span> <span class="n">-Path</span> <span class="nv">$exportDir</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span> <span class="p">|</span> <span class="nb">Out-Null</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">}</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c"># Export the System event log</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nv">$logSession</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Diagnostics</span><span class="p">.</span><span class="n">Eventing</span><span class="p">.</span><span class="n">Reader</span><span class="p">.</span><span class="n">EventLogSession</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nv">$logSession</span><span class="p">.</span><span class="n">ExportLog</span><span class="p">(</span><span class="s2">&quot;System&quot;</span><span class="p">,</span> <span class="no">[System.Diagnostics.Eventing.Reader.PathType]</span><span class="p">::</span><span class="n">LogName</span><span class="p">,</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="nv">$exportFile</span><span class="p">)</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nb">Write-Host</span> <span class="s2">&quot;System log exported to: $exportFile&quot;</span>
+</span></code></pre></div>
 <p>Yes! You can use PowerShell&rsquo;s built-in <code>Export-EventLog</code> or <code>Save-EventLog</code> (depending on your Windows version) instead of <code>wevtutil</code>. However, these cmdlets work with classic event logs, not the newer Windows Event Log system.</p>
 <p>For modern logs (like &ldquo;System&rdquo;), use <code>New-EventLogSession</code> with <code>Get-WinEvent</code> to export logs programmatically.</p>
 <p>Alternative using <code>Get-WinEvent</code> and <code>.SaveChanges()</code>

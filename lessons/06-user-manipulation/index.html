@@ -468,11 +468,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../09-AI-as-a-Tool/" class="md-nav__link">
+      <a href="../09-ai-as-a-tool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     AI: Not Quite Our New Overlords
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-knowledge-check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Your Turn
     
   </span>
   
@@ -601,10 +623,81 @@
 <p>One of the most common objects most of us will interact with are user accounts in Active Directory. So let&rsquo;s talk a little about that</p>
 <h1 id="find-a-user">Find a User</h1>
 <p>The cmdlet to load a user account into memory is <code>Get-ADUser</code></p>
+<p>By Default, <code>Get-ADUser</code> works by just passing a username as an object</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c"># Find an AD user with the username mason</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">Get-ADUser</span> <span class="n">mason</span>
+</span></code></pre></div>
+<p>Gives the result:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>DistinguishedName : CN=Mason Feuhrer,OU=Active Users,OU=Domain Users,DC=omicr0n,DC=com
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Enabled           : True
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>GivenName         : Mason
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>Name              : Mason Feuhrer
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>ObjectClass       : user
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>ObjectGUID        : 776c1f2a-f3f2-4d08-96e9-1878fe2fd0d1
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>SamAccountName    : mason
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>SID               : S-1-5-21-2850356459-7477480-345521354-1107
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Surname           : Feuhrer
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>UserPrincipalName : mason@omicr0n.com
+</span></code></pre></div>
 <h1 id="update-a-user">Update a User</h1>
 <p>The cmdlet to update a user account is <code>Set-ADUser</code></p>
+<p><code>Set-ADUser</code> requires a user to be referenced, or else no action will be taken. You can select the user either by passing a username:
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Set-ADUser</span> <span class="n">-Identity</span> <span class="n">mason</span> <span class="o">-Replace</span> <span class="p">@(</span><span class="n">url</span><span class="p">=</span><span class="s2">&quot;masonfeuhrer.com&quot;</span><span class="p">)</span>
+</span></code></pre></div>
+or by passing an object:
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># You can either use a variable to get the user and then set the property:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">$user</span> <span class="p">=</span> <span class="nb">Get-ADUser</span> <span class="n">mason</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">Set-ADUser</span> <span class="nv">$user</span> <span class="o">-Replace</span> <span class="p">@(</span><span class="n">url</span><span class="p">=</span><span class="s2">&quot;masonfeuhrer.com&quot;</span><span class="p">)</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c"># Or you can use the pipeline:</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">Get-ADUser</span> <span class="n">mason</span> <span class="p">|</span> <span class="nb">Set-ADUser</span> <span class="o">-Replace</span> <span class="p">@(</span><span class="n">url</span><span class="p">=</span><span class="s2">&quot;masonfeuhrer.com&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
 <h1 id="create-a-user">Create a User</h1>
 <p>The cmdlet to create a new user account is is <code>New-ADUser</code></p>
+<p>Creating a new user in Active directory only requires passing a name, but that only creates a user object, and assigns no Universal Principal Name, Display Name or Password. Effectively, you have a user that can&rsquo;t login.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>New-ADUser testguy
+</span></code></pre></div>
+<p>results in:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>DistinguishedName : CN=testguy,OU=Domain Users,DC=omicr0n,DC=com
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Enabled           : False
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>GivenName         : 
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Name              : testguy
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>ObjectClass       : user
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>ObjectGUID        : db291867-b90c-44cc-b254-27e328c98f36
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>SamAccountName    : testguy
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>SID               : S-1-5-21-2850356459-7477480-345521354-13291
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>Surname           : 
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>UserPrincipalName : 
+</span></code></pre></div>
+<p>To use this cmdlet a little more effectively, we should include some properties so that our user can be more easily recognized and actually log in to systems:</p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">New-Aduser</span> <span class="n">-SamAccountName</span> <span class="s2">&quot;mason-ergos&quot;</span> <span class="n">-GivenName</span> <span class="s2">&quot;Mason&quot;</span> <span class="n">-Surname</span> <span class="s2">&quot;Feuhrer&quot;</span> <span class="n">-Name</span> <span class="s2">&quot;Mason Feuhrer&quot;</span> <span class="n">-Office</span> <span class="s2">&quot;Austin&quot;</span> <span class="n">-Enabled</span> <span class="nv">$true</span>
+</span></code></pre></div>
+<p>The above command gives a better structured user account, and gives us more control to define the object being created. The user object also now looks like this when we perform <code>Get-ADUser</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>DistinguishedName : CN=Mason Feuhrer,OU=Domain Users,DC=omicr0n,DC=com
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Enabled           : True
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>GivenName         : Mason
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>Name              : Mason Feuhrer
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>ObjectClass       : user
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>ObjectGUID        : 8a8e8d21-ebbf-4af9-9238-05cac0dd50a4
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>SamAccountName    : mason-ergos
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>SID               : S-1-5-21-2850356459-7477480-345521354-13293
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Surname           : Feuhrer
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>UserPrincipalName : 
+</span></code></pre></div>
+<p>We can also structure our properties in an array, and pass that data as a whole. This method lends itself to automation as we can start to perform actions like reading a list of users from a CSV and setting AD attributes based on those values. </p>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c"># First define the parameters</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">$userParams</span> <span class="p">=</span> <span class="p">@{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">Name</span> <span class="p">=</span> <span class="s2">&quot;Mason Feuhrer&quot;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">GivenName</span> <span class="p">=</span> <span class="s2">&quot;Mason&quot;</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>    <span class="n">Surname</span> <span class="p">=</span> <span class="s2">&quot;Feuhrer&quot;</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">SamAccountName</span> <span class="p">=</span> <span class="s2">&quot;mason-ergos&quot;</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">Office</span> <span class="p">=</span> <span class="s2">&quot;Austin&quot;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">Enabled</span> <span class="p">=</span> <span class="nv">$true</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="p">}</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="c"># And then use those Parameters to create the user account</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="nb">New-ADUser</span> <span class="nv">@userParams</span>
+</span></code></pre></div>
 
 
 

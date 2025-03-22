@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../../lessons/09-AI-as-a-Tool/">
+        <link rel="prev" href="../../lessons/10-knowledge-check/">
       
       
       
@@ -454,11 +454,33 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lessons/09-AI-as-a-Tool/" class="md-nav__link">
+      <a href="../../lessons/09-ai-as-a-tool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     AI: Not Quite Our New Overlords
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lessons/10-knowledge-check/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Your Turn
     
   </span>
   
@@ -713,8 +735,8 @@
 <p>Through its expansive plugin library, VS Code is adaptable to almost any programming or scripting language, and can even connect remotely to many types of endpoints for easier development, debugging, or general script running. </p>
 <p>You can find the latest versions of VS Code for download at <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></p>
 <p>On Windows 10 and newer, you can also install this using the package manager winget:</p>
-<pre><code class="language-powershell">winget install Microsoft.VisualStudioCode
-</code></pre>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">winget</span> <span class="n">install</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualStudioCode</span>
+</span></code></pre></div>
 <h2 id="visual-studio-code-powershell-extension">Visual Studio Code PowerShell Extension</h2>
 <p>With VS Code installed, you can now install extensions. </p>
 <p>To see your installed extensions, and search for new ones, open VS Code and look for the Extensions icon on the left panel (Ctrl+Shift+X).</p>
@@ -723,24 +745,24 @@
 <p>Git is the standard when it comes to Source Control. While we won&rsquo;t be going in depth with Git, it will be helpful for some portions of the lab (such as cloning and updating the repository as it improves.)</p>
 <p>You can find the latest versions of git at <a href="https://git-scm.com/">https://git-scm.com/</a></p>
 <p>On Windows 10 and newer, you can also install this using the package manager winget:</p>
-<pre><code class="language-powershell">winget install --id Git.Git -e --source winget
-</code></pre>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">winget</span> <span class="n">install</span> <span class="p">-</span><span class="n">-id</span> <span class="n">Git</span><span class="p">.</span><span class="n">Git</span> <span class="n">-e</span> <span class="p">-</span><span class="n">-source</span> <span class="n">winget</span>
+</span></code></pre></div>
 <h2 id="a-copy-of-this-repository">A copy of this repository</h2>
 <p>It&rsquo;ll be easiest to follow along if you have access to the materials. </p>
 <p>You can find the repository here: https://github.com/ergostechnology/Powershell_Lab</p>
 <p>Of if you want to follow the spirit of the platform, open a terminal:</p>
-<pre><code class="language-powershell"># Make sure you are in your home directory
-cd ~
-# Create a projects directory if you don't have one
-mkdir projects
-# Move on in to that
-cd projects
-# Clone the project
-git clone https://github.com/ergostechnology/Powershell_Lab
-</code></pre>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c"># Make sure you are in your home directory</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd </span><span class="p">~</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c"># Create a projects directory if you don&#39;t have one</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">mkdir</span> <span class="n">projects</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c"># Move on in to that</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">cd </span><span class="n">projects</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c"># Clone the project</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">ergostechnology</span><span class="p">/</span><span class="n">Powershell_Lab</span>
+</span></code></pre></div>
 <p>If you are already familiar with using git at the command line, you can skip to the end and just:</p>
-<pre><code class="language-powershell">git clone https://github.com/ergostechnology/Powershell_Lab
-</code></pre>
+<div class="language-powershell highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">://</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">ergostechnology</span><span class="p">/</span><span class="n">Powershell_Lab</span>
+</span></code></pre></div>
 
 
 
