@@ -202,4 +202,4 @@ Would you like help customizing the export further, such as filtering events by 
 ![Thanks For Coming](https://media.tenor.com/QTtnvTd5RXwAAAAC/thats-it-there-you-go.gif)
 
 # Q & A Time
-You've got questions, I might have answers.
+You've got questions, we might have answers.
