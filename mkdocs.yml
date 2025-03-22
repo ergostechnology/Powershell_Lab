@@ -25,6 +25,8 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to system preference
+  features:
+    - content.code.copy
   font:
     text: Roboto
     code: Roboto Mono
@@ -32,9 +34,18 @@ theme:
     repo: fontawesome/brands/github
   features:
     - content.action.edit
+  # code: 
+  #  css: monokai
 markdown_extensions:
   - smarty: {}
   - sane_lists : {}
   - footnotes: {}
   - toc:
       baselevel: 1
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences

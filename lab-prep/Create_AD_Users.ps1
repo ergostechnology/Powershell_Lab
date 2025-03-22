@@ -23,6 +23,7 @@ foreach ($user in $userData) {
         EmailAddress = "$($user.FirstName)-$($user.LastName)@$($domain.DNSRoot)"
         UserPrincipalName = "$($user.FirstName[0])$($user.LastName)@$($domain.DNSRoot)"
         # AccountPassword = $password
+        Office = $user.Planet
         Enabled = $true
         Path = $ouDN
     }

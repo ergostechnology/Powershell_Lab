@@ -1,9 +1,9 @@
 # What the Heck is a Cmdlet?
 
 There are a few words and concepts that you will want to understand before we go on. Time for the boring stuff.
-## cmdlets 
+## Cmdlets 
 
-cmdlets are the verbs or action names given to the operators in PowerShell. The start of any action will begin with a cmdlet.
+Cmdlets are the verbs or action names given to the operators in PowerShell. The start of any action will begin with a cmdlet.
 
 Try running the following cmdlet
 
@@ -13,7 +13,7 @@ Update-Help
 
 Nice, you fell for it. Now the local PowerShell help files on your computer should be updated with the latest information. 
 
-## variables
+## Variables
 
 Variables are common in just about every programming language, and PowerShell is no different. 
 
@@ -27,7 +27,7 @@ $array = @('1','2','3') # Creates an array with the the values 1, 2, and 3.
 $processes = Get-Process # Stores a .NET object with the results of the Get-Process cmdlet into the variable $processes
 ```
 
-## properties
+## Properties
 
 
 Properties are the parts that define an object. For instance, a user account has properties like username, e-mail address, and password. 
